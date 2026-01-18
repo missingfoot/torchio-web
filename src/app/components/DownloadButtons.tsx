@@ -68,7 +68,7 @@ export default function DownloadButtons() {
   // Order buttons with detected OS first
   const buttons = [
     { id: "windows", label: "Windows", icon: <WindowsIcon />, url: "https://github.com/missingfoot/torchio/releases/latest/download/Torchio-windows-x64.exe" },
-    { id: "macos", label: "macOS", icon: <MacOSIcon />, url: "https://github.com/missingfoot/torchio/releases/latest/download/Torchio-macos-x64.dmg" },
+    { id: "macos", label: "macOS", icon: <MacOSIcon />, url: "https://github.com/missingfoot/torchio/releases/latest/download/Torchio-macos-arm64.dmg" },
     { id: "linux", label: "Linux", icon: <LinuxIcon />, url: "https://github.com/missingfoot/torchio/releases/latest/download/Torchio-linux-amd64.deb" },
   ];
 
