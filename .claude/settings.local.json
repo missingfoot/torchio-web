@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:nova.app)",
+      "Bash(set:*)",
+      "Bash(npm install:*)"
+    ]
+  }
+}

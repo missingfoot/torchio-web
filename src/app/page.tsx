@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { FileIcon } from "@untitledui/file-icons";
 import { IconCircleCheckOutline48 } from "nucleo-core-essential-outline-48";
 import DownloadButtons from "./components/DownloadButtons";
@@ -9,12 +10,7 @@ function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent">
-            <svg className="h-5 w-5 text-background" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
+          <Image src="/icon.png" alt="Torchio" width={32} height={32} className="h-8 w-8" />
           <span className="text-xl font-semibold">Torchio</span>
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
@@ -290,12 +286,7 @@ function Footer() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent">
-              <svg className="h-5 w-5 text-background" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
+            <Image src="/icon.png" alt="Torchio" width={32} height={32} className="h-8 w-8" />
             <span className="font-semibold">Torchio</span>
           </div>
           <p className="text-sm text-muted">
