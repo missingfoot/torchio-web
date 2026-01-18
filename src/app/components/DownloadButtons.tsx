@@ -62,16 +62,14 @@ export default function DownloadButtons() {
     setOS(detectOS());
   }, []);
 
-  const baseUrl = "https://github.com/missingfoot/torchio/releases/latest";
-
   const primaryStyle = "flex h-14 items-center justify-center gap-3 rounded-full bg-accent px-8 text-lg font-medium text-background transition-colors hover:bg-accent-hover";
   const secondaryStyle = "flex h-14 items-center justify-center gap-3 rounded-full border border-border px-8 text-lg font-medium transition-colors hover:bg-card";
 
   // Order buttons with detected OS first
   const buttons = [
-    { id: "windows", label: "Windows", icon: <WindowsIcon /> },
-    { id: "macos", label: "macOS", icon: <MacOSIcon /> },
-    { id: "linux", label: "Linux", icon: <LinuxIcon /> },
+    { id: "windows", label: "Windows", icon: <WindowsIcon />, url: "https://github.com/missingfoot/torchio/releases/latest/download/Torchio-windows-x64.exe" },
+    { id: "macos", label: "macOS", icon: <MacOSIcon />, url: "https://github.com/missingfoot/torchio/releases/latest/download/Torchio-macos-x64.dmg" },
+    { id: "linux", label: "Linux", icon: <LinuxIcon />, url: "https://github.com/missingfoot/torchio/releases/latest/download/Torchio-linux-amd64.deb" },
   ];
 
   // Sort to put detected OS first
@@ -87,9 +85,7 @@ export default function DownloadButtons() {
         {sortedButtons.map((button, index) => (
           <Link
             key={button.id}
-            href={baseUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={button.url}
             className={button.id === os || (os === null && index === 0) ? primaryStyle : secondaryStyle}
           >
             {button.icon}
