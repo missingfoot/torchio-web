@@ -4,6 +4,8 @@ import { FileIcon } from "@untitledui/file-icons";
 import { IconCircleCheckOutline48 } from "nucleo-core-essential-outline-48";
 import DownloadButtons from "./components/DownloadButtons";
 import ScrollLink from "./components/ScrollLink";
+import Stars from "./components/Stars";
+import GlowingIcon from "./components/GlowingIcon";
 
 function Header() {
   return (
@@ -36,17 +38,17 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center px-6 pt-16">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-accent/10 via-background to-background" />
-      <div className="mx-auto max-w-4xl text-center">
+    <section className="relative flex min-h-screen flex-col items-center justify-center px-6 pt-16 overflow-hidden">
+      <Stars />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-accent/20 via-background to-background" />
+      <div className="relative z-10 mx-auto max-w-4xl text-center">
+        <GlowingIcon />
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-sm text-muted">
           <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
           Available for Windows, macOS & Linux
         </div>
         <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight md:text-7xl">
-          Cut, clip, and convert
-          <br />
-          <span className="text-accent">without the hassle.</span>
+          Cut, clip, and convert.
         </h1>
         <p className="mx-auto mb-10 max-w-2xl text-lg text-muted md:text-xl">
           No account. No uploads. No cloud. Just your videos, on your machine.
