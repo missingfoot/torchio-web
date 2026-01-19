@@ -62,14 +62,14 @@ export default function DownloadButtons() {
     setOS(detectOS());
   }, []);
 
-  const primaryStyle = "flex h-14 items-center justify-center gap-3 rounded-full bg-accent px-8 text-lg font-medium text-background transition-colors hover:bg-accent-hover";
-  const secondaryStyle = "flex h-14 items-center justify-center gap-3 rounded-full border border-border px-8 text-lg font-medium transition-colors hover:bg-card";
+  const primaryStyle = "flex h-16 items-center justify-center gap-3 rounded-full bg-accent px-6 text-lg font-medium text-white transition-colors hover:bg-accent-hover";
+  const secondaryStyle = "flex h-16 items-center justify-center gap-3 rounded-full border border-border px-6 text-lg font-medium transition-colors hover:bg-card";
 
   // Order buttons with detected OS first
   const buttons = [
-    { id: "windows", label: "Windows", icon: <WindowsIcon />, url: "https://github.com/missingfoot/torchio/releases/latest/download/Torchio-windows-x64.exe" },
-    { id: "macos", label: "macOS", icon: <MacOSIcon />, url: "https://github.com/missingfoot/torchio/releases/latest/download/Torchio-macos-arm64.dmg" },
-    { id: "linux", label: "Linux", icon: <LinuxIcon />, url: "https://github.com/missingfoot/torchio/releases/latest/download/Torchio-linux-amd64.deb" },
+    { id: "windows", label: "Windows", subtext: "10/11", icon: <WindowsIcon />, url: "https://github.com/missingfoot/torchio/releases/latest/download/Torchio-windows-x64.exe" },
+    { id: "macos", label: "macOS", subtext: "ARM", icon: <MacOSIcon />, url: "https://github.com/missingfoot/torchio/releases/latest/download/Torchio-macos-arm64.dmg" },
+    { id: "linux", label: "Linux", subtext: "Debian", icon: <LinuxIcon />, url: "https://github.com/missingfoot/torchio/releases/latest/download/Torchio-linux-amd64.deb" },
   ];
 
   // Sort to put detected OS first
@@ -81,7 +81,7 @@ export default function DownloadButtons() {
 
   return (
     <>
-      <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+      <div className="grid gap-4 sm:grid-cols-3 w-full max-w-2xl mx-auto">
         {sortedButtons.map((button, index) => (
           <Link
             key={button.id}
@@ -89,13 +89,13 @@ export default function DownloadButtons() {
             className={button.id === os || (os === null && index === 0) ? primaryStyle : secondaryStyle}
           >
             {button.icon}
-            {button.label}
+            <div className="flex flex-col items-start leading-tight">
+              <span>{button.label}</span>
+              <span className="text-xs opacity-70">{button.subtext}</span>
+            </div>
           </Link>
         ))}
       </div>
-      <p className="mt-8 text-sm text-muted">
-        Windows 10/11, macOS 11+, Ubuntu 20.04+
-      </p>
       <Link
         href="https://github.com/missingfoot/torchio"
         target="_blank"

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FileIcon } from "@untitledui/file-icons";
-import { IconCircleCheckOutline48 } from "nucleo-core-essential-outline-48";
 import DownloadButtons from "./components/DownloadButtons";
 import ScrollLink from "./components/ScrollLink";
 import Stars from "./components/Stars";
@@ -27,7 +26,7 @@ function Header() {
         </nav>
         <ScrollLink
           href="#download"
-          className="rounded-full bg-accent px-5 py-2 text-sm font-medium text-background transition-colors hover:bg-accent-hover"
+          className="rounded-full bg-accent px-5 py-2 text-sm font-medium text-white hover:bg-accent-hover"
         >
           Download
         </ScrollLink>
@@ -52,12 +51,12 @@ function Hero() {
         </h1>
         <p className="mx-auto mb-10 max-w-2xl text-lg text-muted md:text-xl">
           No account. No uploads. No cloud. Just your videos, on your machine.
-          The fast, offline video converter that respects your privacy.
+          No learning curve. Beginners get started in seconds, pros get the speed they need.
         </p>
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <ScrollLink
             href="#download"
-            className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-accent px-8 text-lg font-medium text-background transition-colors hover:bg-accent-hover sm:w-auto"
+            className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-accent px-8 text-lg font-medium text-white transition-colors hover:bg-accent-hover sm:w-auto"
           >
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -72,12 +71,7 @@ function Hero() {
           </ScrollLink>
         </div>
       </div>
-      <div className="absolute bottom-10 animate-bounce">
-        <svg className="h-6 w-6 text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </div>
-    </section>
+          </section>
   );
 }
 
@@ -87,33 +81,41 @@ function FeatureSection({
   title,
   description,
   features,
-  reverse = false
+  image,
+  reverse = false,
 }: {
   id?: string;
   badge: string;
   title: string;
   description: string;
   features: { title: string; description: string }[];
+  image?: string;
   reverse?: boolean;
 }) {
   return (
     <section id={id} className="border-t border-border py-24">
-      <div className={`mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-2 lg:gap-20 ${reverse ? 'lg:[&>*:first-child]:order-2' : ''}`}>
-        <div>
-          <div className="mb-4 inline-block rounded-full bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent">
-            {badge}
+      <div className="mx-auto max-w-6xl px-6">
+        <div className={`mb-12 grid gap-12 lg:gap-16 items-center ${reverse ? 'lg:grid-cols-[3fr_2fr] lg:[&>*:first-child]:order-2' : 'lg:grid-cols-[2fr_3fr]'}`}>
+          <div>
+            <div className="mb-4 inline-block rounded-full bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent">
+              {badge}
+            </div>
+            <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">{title}</h2>
+            <p className="text-lg text-muted">{description}</p>
           </div>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">{title}</h2>
-          <p className="text-lg text-muted">{description}</p>
+          <div className="flex items-center justify-center rounded-2xl bg-card/50 min-h-[400px]">
+            {image ? (
+              <Image src={image} alt={title} width={600} height={400} className="rounded-xl" />
+            ) : (
+              <span className="text-muted">Image placeholder</span>
+            )}
+          </div>
         </div>
-        <div className="grid gap-4">
+        <div className="grid gap-4 md:grid-cols-3">
           {features.map((feature, i) => (
-            <div key={i} className="flex gap-4 rounded-xl border border-border bg-card p-6 transition-colors hover:bg-card-hover">
-              <IconCircleCheckOutline48 className="shrink-0 text-accent" corners="round" />
-              <div>
-                <h3 className="mb-1 font-semibold">{feature.title}</h3>
-                <p className="text-sm text-muted">{feature.description}</p>
-              </div>
+            <div key={i} className="rounded-xl border border-border bg-card p-6 transition-colors hover:bg-card-hover">
+              <h3 className="mb-1 font-semibold">{feature.title}</h3>
+              <p className="text-sm text-muted">{feature.description}</p>
             </div>
           ))}
         </div>
@@ -185,12 +187,9 @@ function PrivacySection() {
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
           {points.map((point, i) => (
-            <div key={i} className="flex gap-4 rounded-xl border border-border bg-card p-6">
-              <IconCircleCheckOutline48 className="shrink-0 text-accent" corners="round" />
-              <div>
-                <h3 className="mb-1 font-semibold">{point.title}</h3>
-                <p className="text-sm text-muted">{point.description}</p>
-              </div>
+            <div key={i} className="rounded-xl border border-border bg-card p-6">
+              <h3 className="mb-1 font-semibold">{point.title}</h3>
+              <p className="text-sm text-muted">{point.description}</p>
             </div>
           ))}
         </div>
@@ -222,7 +221,7 @@ function UseCases() {
         <div className="grid gap-4 md:grid-cols-2">
           {cases.map((item, i) => (
             <div key={i} className="flex items-start gap-4 rounded-xl border border-border bg-card p-6 transition-colors hover:bg-card-hover">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent font-mono text-sm font-bold text-background">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent font-mono text-sm font-bold text-white">
                 {i + 1}
               </div>
               <div>
@@ -254,28 +253,39 @@ function DownloadSection() {
   );
 }
 
-function ComingSoon() {
+function Roadmap() {
+  const items = [
+    { title: "Subtitle Support", description: "Import, edit, and burn in subtitles. Extract subtitles from videos or add your own." },
+    { title: "Crop & Resize", description: "Crop, resize, and change aspect ratios. Perfect for repurposing content across platforms." },
+  ];
+
   return (
     <section className="border-t border-border py-24">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="rounded-2xl border border-border bg-card p-8 md:p-12">
-          <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
-            <div>
-              <div className="mb-2 inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-                Coming Soon
-              </div>
-              <h3 className="mb-2 text-2xl font-bold">Subtitle Support</h3>
-              <p className="text-muted">
-                Import, edit, and burn in subtitles. Extract subtitles from videos or add your own.
-              </p>
-            </div>
-            <div className="flex shrink-0 items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm text-muted">
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              In Development
-            </div>
+        <div className="mb-12 text-center">
+          <div className="mb-4 inline-block rounded-full bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent">
+            Roadmap
           </div>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">What&apos;s next</h2>
+          <p className="mx-auto max-w-2xl text-lg text-muted">
+            Features we&apos;re working on to make Torchio even better.
+          </p>
+        </div>
+        <div className="mx-auto max-w-2xl">
+          {items.map((item, i) => (
+            <div key={i} className="relative pl-14 pb-8 last:pb-0">
+              <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-accent">
+                <span className="text-lg font-bold text-white">{i + 1}</span>
+              </div>
+              {i < items.length - 1 && (
+                <div className="absolute left-[19px] top-10 h-full w-0.5 bg-border" />
+              )}
+              <div className="rounded-xl border border-border bg-card p-6">
+                <h3 className="mb-1 font-semibold">{item.title}</h3>
+                <p className="text-sm text-muted">{item.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -323,7 +333,6 @@ export default function Home() {
           description="The app is built around one idea: make cutting videos fast. Drag through the timeline to select what you want to keep. Need multiple clips? Just keep adding them."
           features={[
             { title: "Auto scene detection", description: "One click detects all scene changes and creates cuts automatically. Hours of footage, trimmed in seconds." },
-            { title: "Dead simple interface", description: "No learning curve. Beginners get started in seconds, pros get the speed they need. Just drag, cut, export." },
             { title: "Multi-clip workflow", description: "Create as many cuts as you want from one video. Each cut gets its own color in the timeline." },
             { title: "Batch export", description: "All clips export at once as separate files. Queue them up, walk away, done." },
           ]}
@@ -363,7 +372,7 @@ export default function Home() {
           reverse
         />
         <UseCases />
-        <ComingSoon />
+        <Roadmap />
         <DownloadSection />
       </main>
       <Footer />
