@@ -16,7 +16,7 @@ function Hero() {
         <GlowingIcon />
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-sm text-muted">
           <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-          Available for Windows, macOS & Linux
+          Available for Windows & macOS
         </div>
         <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight md:text-7xl">
           Cut, crop, and convert.
