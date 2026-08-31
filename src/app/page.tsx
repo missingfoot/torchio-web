@@ -30,10 +30,14 @@ function Hero() {
             href="#download"
             className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-accent px-8 text-lg font-medium text-white transition-colors hover:bg-accent-hover sm:w-auto"
           >
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="h-5 w-5 hidden sm:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
-            Download Free
+            <span className="hidden sm:inline">Download Free</span>
+            <span className="sm:hidden">Download Options</span>
+            <svg className="h-5 w-5 sm:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
           </ScrollLink>
           <ScrollLink
             href="#features"
